@@ -30,4 +30,38 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        valor: '10.00',
+                        valor: '10.00',             // ← altere o valor aqui
+                        descricao: 'Pagamento Online'
+                    })
+                });
+
+                const data = await response.json();
+
+                document.getElementById("loading").style.display = "none";
+
+                if (data.copyAndPaste) {
+                    document.getElementById("pixCode").value = data.copyAndPaste;
+                } else {
+                    document.getElementById("pixCode").value = 'Erro ao gerar código';
+                    document.getElementById("status").classList.replace("text-success", "text-danger");
+                    document.getElementById("status").innerText = "Erro ao gerar o Pix.";
+                }
+            } catch (err) {
+                document.getElementById("loading").innerText = "❌ Falha ao conectar com a API.";
+            }
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("pixCode");
+            if (!copyText.value) return;
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            document.getElementById("status").innerText = "✅ Código copiado com sucesso!";
+        }
+
+        gerarPix();
+    </script>
+
+</body>
+</html>
