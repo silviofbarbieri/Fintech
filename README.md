@@ -64,6 +64,7 @@ function copyToClipboard() {
 }
 </script>
 
+
 # 3. Segurança e Regras do Banco Central
 Ao gerar o "Copia e Cola", atente-se a estes pontos para garantir a funcionalidade:
 
