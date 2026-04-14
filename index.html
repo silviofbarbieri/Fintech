@@ -1,0 +1,23 @@
+<div class="card p-4 shadow-sm">
+    <h5>Pagamento via PIX</h5>
+    <p>Clique no botão para copiar o código e pague no app do seu banco.</p>
+    
+    <div class="input-group mb-3">
+        <input type="text" id="pixCode" class="form-control" readonly value="Aguardando geração...">
+        <button class="btn btn-primary" type="button" onclick="copyToClipboard()">
+            Copiar Código
+        </button>
+    </div>
+    <div id="status" class="text-success small"></div>
+</div>
+
+<script>
+function copyToClipboard() {
+    const copyText = document.getElementById("pixCode");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // Para mobile
+    navigator.clipboard.writeText(copyText.value);
+    
+    document.getElementById("status").innerText = "Código copiado com sucesso!";
+}
+</script>
