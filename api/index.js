@@ -1,4 +1,3 @@
-cat > /workspaces/Fintech/api/index.js << 'EOF'
 import { Pix } from 'pix-payload';
 
 export default async function handler(req, res) {
@@ -8,10 +7,10 @@ export default async function handler(req, res) {
 
     try {
         const pix = new Pix(
-            'SUA_CHAVE_PIX_AQUI',        // ← substitua pela sua chave
+            'SUA_CHAVE_PIX_AQUI',
             descricao || 'Pagamento Online',
-            'SEU NOME AQUI',             // ← seu nome completo
-            'SAO PAULO',                 // ← sua cidade
+            'SEU NOME AQUI',
+            'SAO PAULO',
             'TXID123',
             Number(valor)
         );
@@ -27,4 +26,3 @@ export default async function handler(req, res) {
         res.status(500).json({ error: 'Erro ao gerar payload Pix' });
     }
 }
-EOF
