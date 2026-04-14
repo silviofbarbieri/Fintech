@@ -1,9 +1,11 @@
+import express from 'express';
 import pkg from 'pix-payload';
 const { Pix } = pkg;
 
-export default async function handler(req, res) {
-    if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
+const app = express();
+app.use(express.json());
 
+app.post('/api', (req, res) => {
     const { valor, descricao } = req.body;
 
     try {
@@ -26,4 +28,8 @@ export default async function handler(req, res) {
         console.error(error);
         res.status(500).json({ error: 'Erro ao gerar payload Pix' });
     }
-}
+});
+
+app.listen(3000, () => {
+    console.log('Servidor rodando em http://localhost:3000');
+});
