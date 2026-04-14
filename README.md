@@ -1,6 +1,6 @@
 # Fintech
 
-1. Implementação no Backend (Vercel Function)
+# 1. Implementação no Backend (Vercel Function)
 Você pode criar uma função que gera o código sem depender de uma API externa de banco (Pix Estático), ou usando um gateway (Pix Dinâmico). Abaixo, mostro como gerar o Copia e Cola Estático (onde você define o valor e a chave).
 
 Instale a dependência: npm install pix-payload-generator
@@ -35,7 +35,8 @@ export default async function handler(req, res) {
         res.status(500).json({ error: 'Erro ao gerar payload Pix' });
     }
 }
-2. Exibição no Frontend (Bootstrap)
+
+# 2. Exibição no Frontend (Bootstrap)
 No seu index.html, você precisa de um campo para o usuário copiar o código facilmente.
 
 HTML
@@ -62,7 +63,8 @@ function copyToClipboard() {
     document.getElementById("status").innerText = "Código copiado com sucesso!";
 }
 </script>
-3. Segurança e Regras do Banco Central
+
+# 3. Segurança e Regras do Banco Central
 Ao gerar o "Copia e Cola", atente-se a estes pontos para garantir a funcionalidade:
 
 Chave PIX: Se for CPF/CNPJ, use apenas números. Se for chave aleatória, inclua os hífens.
