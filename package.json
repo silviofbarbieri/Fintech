@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "pix-payload": "^1.0.4"
   }
